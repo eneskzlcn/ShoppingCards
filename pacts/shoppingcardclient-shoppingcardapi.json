@@ -1,0 +1,289 @@
+{
+  "consumer": {
+    "name": "ShoppingCardClient"
+  },
+  "provider": {
+    "name": "ShoppingCardApi"
+  },
+  "interactions": [
+    {
+      "description": "A request for get all products",
+      "providerState": "i get products successfully",
+      "request": {
+        "method": "GET",
+        "path": "/products"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": [
+          {
+            "product_id": 1,
+            "product_image_source": "imageurl",
+            "product_name": "T-Shirt",
+            "product_price": "50",
+            "product_category": "Clothes",
+            "product_color": "Black"
+          }
+        ],
+        "matchingRules": {
+          "$.body": {
+            "min": 1
+          },
+          "$.body[*].*": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "A request for get product by id",
+      "providerState": "i get product successfully",
+      "request": {
+        "method": "GET",
+        "path": "/products/1"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "product_id": 1,
+          "product_image_source": "imageurl",
+          "product_name": "T-Shirt",
+          "product_price": "50",
+          "product_category": "Clothes",
+          "product_color": "Black"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "A request for get basket products",
+      "providerState": "i get basket products successfully",
+      "request": {
+        "method": "GET",
+        "path": "/basket"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": [
+          {
+            "product": {
+              "product_id": 1,
+              "product_image_source": "imageurl",
+              "product_name": "T-Shirt",
+              "product_price": "50",
+              "product_category": "Clothes",
+              "product_color": "Black"
+            },
+            "count": 1
+          }
+        ],
+        "matchingRules": {
+          "$.body": {
+            "min": 1
+          },
+          "$.body[*].*": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "A request for add product to basket products",
+      "providerState": "i add product to basket products successfully",
+      "request": {
+        "method": "POST",
+        "path": "/basket",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "product_id": 1,
+          "product_image_source": "imageurl",
+          "product_name": "T-Shirt",
+          "product_price": "50",
+          "product_category": "Clothes",
+          "product_color": "Black"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "count": 1
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "A request for increase count of a product in basket by product id",
+      "providerState": "i increased count of product successfully by given product id",
+      "request": {
+        "method": "GET",
+        "path": "/basket/1/increase"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "product": {
+            "product_id": 1,
+            "product_image_source": "imageurl",
+            "product_name": "T-Shirt",
+            "product_price": "50",
+            "product_category": "Clothes",
+            "product_color": "Black"
+          },
+          "count": 1
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "A request for decrease count of a product in basket by product id",
+      "providerState": "i decreased count of product successfully by given product id",
+      "request": {
+        "method": "GET",
+        "path": "/basket/1/decrease"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "product": {
+            "product_id": 1,
+            "product_image_source": "imageurl",
+            "product_name": "T-Shirt",
+            "product_price": "50",
+            "product_category": "Clothes",
+            "product_color": "Black"
+          },
+          "count": 1
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "A request for remove a product from basket by product id",
+      "providerState": "i removed a product successfully from basket products by the products id",
+      "request": {
+        "method": "DELETE",
+        "path": "/basket/1/remove"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "product": {
+            "product_id": 1,
+            "product_image_source": "imageurl",
+            "product_name": "T-Shirt",
+            "product_price": "50",
+            "product_category": "Clothes",
+            "product_color": "Black"
+          },
+          "count": 1
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "A request for clear all products in basket",
+      "providerState": "i cleared all the products in basket successfully",
+      "request": {
+        "method": "DELETE",
+        "path": "/basket"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": [
+          {
+            "product": {
+              "product_id": 1,
+              "product_image_source": "imageurl",
+              "product_name": "T-Shirt",
+              "product_price": "50",
+              "product_category": "Clothes",
+              "product_color": "Black"
+            },
+            "count": 1
+          }
+        ],
+        "matchingRules": {
+          "$.body": {
+            "min": 1
+          },
+          "$.body[*].*": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "A request for get count of products in basket",
+      "providerState": "i get count of products in basket sucessfully",
+      "request": {
+        "method": "GET",
+        "path": "/basket/count"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "count": 1
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
