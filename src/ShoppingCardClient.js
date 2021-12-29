@@ -4,8 +4,9 @@ export default class ShoppingCardClient
 {
     constructor(url)
     {
+       
         if(url == undefined || url == '')   url = process.env.API_BASE_URL; 
-        if (url.endsWith("/"))  url = url.substr(0, url.length - 1)
+        else if (url.endsWith("/"))  url = url.substr(0, url.length - 1)
         this.url = url;  
     }
     toPath = (path)=>
